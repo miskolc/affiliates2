@@ -1,10 +1,23 @@
 class Feed < ActiveRecord::Base
   belongs_to :user
+  has_many :products
   mount_uploaders :file, FileUploader
+
+  def save_products
+    parse_products do |row|
+      product = self.products.create row.to_hash
+    end
+  end
+
+  def print_products
+    parse_products do |row|
+      puts row.to_hash
+    end
+  end
 
   def parse_products
     CSV.foreach(storage_path, headers: true) do |row|
-      puts row.to_hash
+      yield row
     end
   end
 

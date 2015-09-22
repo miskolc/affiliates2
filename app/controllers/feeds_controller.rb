@@ -1,6 +1,8 @@
 class FeedsController < ApplicationController
   def create
-    current_user.feeds.create feed_params
+    feed = current_user.feeds.create feed_params
+    ParserWorker.perform_async feed.id
+    
     redirect_to user_path current_user
   end
 

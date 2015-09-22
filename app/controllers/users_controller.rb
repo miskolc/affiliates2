@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :authorize_resource!, only: [:show]
 
   def show
+    @feed = current_user.feeds.build
   end
 
   private

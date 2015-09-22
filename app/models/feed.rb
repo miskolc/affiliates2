@@ -5,7 +5,8 @@ class Feed < ActiveRecord::Base
 
   def save_products
     parse_products do |row|
-      product = self.products.create row.to_hash
+      self.products.create row.to_hash
+      sleep 1
     end
   end
 

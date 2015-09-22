@@ -12,8 +12,8 @@
 /db/*.sqlite3-journal
 
 # Ignore uploads
-/public/uploads/*.xml
-/public/uploads/*.csv
+/public/uploads/feed/*
+/public/uploads/tmp/*
 
 # Ignore all logfiles and tempfiles.
 /log/*

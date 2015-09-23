@@ -5,3 +5,26 @@
   <%= f.file_field :file, multiple: true %>
   <%= f.submit "Add Feed" %>
 <% end %>
+
+<%= will_paginate @feeds %>
+ <table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Products</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @feeds.each do |feed| %>
+     <tr>
+       <td><%= feed.id %></td>
+       <td><%= feed.basename %></td>
+       <td><%= link_to "Products", user_feed_products_path(current_user, feed) %></td>
+       <td><%= "Delete feed" %></td>
+     </tr>
+  <% end %>
+  </tbody>
+ </table>
+<%= will_paginate @feeds %>

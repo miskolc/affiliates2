@@ -27,6 +27,7 @@ gem 'devise', '~>3.5.2'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'roo', '~>2.1.1'
 gem 'sidekiq', '~>3.4.2'
+gem 'will_paginate', '~>3.0.7'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

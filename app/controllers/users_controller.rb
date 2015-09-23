@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :authorize_resource!, only: [:show]
 
   def show
+    @feeds= current_user.feeds.paginate(page: params[:page], per_page: 5)
     @feed = current_user.feeds.build
   end
 

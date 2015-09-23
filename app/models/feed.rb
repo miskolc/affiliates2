@@ -27,10 +27,10 @@ class Feed < ActiveRecord::Base
   end
 
   def basename
-    File.basename(self.file[0].path).split("\"")[1]
+    File.basename(self.file[0].path).split("\"")[1] if self.file[0]
   end
 
   def directory
-    File.dirname self.file[0].path
+    File.dirname self.file[0].path if self.file[0]
   end
 end

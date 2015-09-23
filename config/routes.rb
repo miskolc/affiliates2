@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'products/index'
+
   devise_for :users
 
   resources :users, only: [:show ] do
-    resources :feeds
+    resources :feeds do
+      resources :products
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

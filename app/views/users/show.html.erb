@@ -21,7 +21,7 @@
      <tr>
        <td><%= feed.id %></td>
        <td><%= feed.basename %></td>
-       <td><%= "Products" %></td>
+       <td><%= link_to "Products", user_feed_products_path(current_user, feed) %></td>
        <td><%= "Delete feed" %></td>
      </tr>
   <% end %>

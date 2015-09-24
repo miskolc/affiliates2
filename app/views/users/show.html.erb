@@ -7,10 +7,11 @@
 <% end %>
 
 <%= will_paginate @feeds %>
- <table>
+<div class="table-responsive">
+ <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th>#</th>
+      <th></th>
       <th>Name</th>
       <th>Products</th>
       <th>Delete</th>
@@ -22,9 +23,10 @@
        <td><%= feed.id %></td>
        <td><%= feed.basename %></td>
        <td><%= link_to "Products", user_feed_products_path(current_user, feed) %></td>
-       <td><%= "Delete feed" %></td>
+       <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><%= "Delete feed" %></td>
      </tr>
   <% end %>
   </tbody>
  </table>
+</div>
 <%= will_paginate @feeds %>

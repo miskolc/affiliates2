@@ -16,6 +16,18 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
+  #Mandrill
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default charset: "utf8"
+
+  config.action_mailer.smtp_settings = {
+    address: "smtp.mandrillapp.com",
+    port:    587,
+    user_name: ENV["MANDRILL_AFFILIATES2_USERNAME"],
+    password:  ENV["MANDRILL_AFFILIATES2_PASSWORD"]
+  }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

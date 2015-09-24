@@ -9,20 +9,31 @@ class Feed < ActiveRecord::Base
 
   def save_products
     parse_products do |row|
-      self.products.create row.to_hash
+      self.products.create row
       sleep 1
     end
   end
 
   def print_products
     parse_products do |row|
-      puts row.to_hash
+      puts row
     end
   end
 
   def parse_products
-    CSV.foreach(storage_path, headers: true) do |row|
-      yield row
+    if extension == '.csv'
+      CSV.foreach(storage_path, headers: true) do |row|
+        yield row.to_hash
+      end
+    else
+      Nokogiri::XML(File.open(storage_path)).xpath(".//item").each do |row|
+        hash = {
+          title: row.xpath('title').text,
+          url:   row.xpath('url').text,
+          price: row.xpath('price').text
+        }
+        yield hash
+      end 
     end
   end
 
@@ -32,6 +43,10 @@ class Feed < ActiveRecord::Base
 
   def basename
     File.basename(self.file[0].path).split("\"")[1] if self.file[0]
+  end
+
+  def extension
+    File.extname basename
   end
 
   def directory

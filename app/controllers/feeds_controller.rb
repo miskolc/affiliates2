@@ -6,6 +6,12 @@ class FeedsController < ApplicationController
     redirect_to user_path current_user
   end
 
+  def destroy
+    @feed = current_user.feeds.find params[:id]
+    @feed.destroy
+    redirect_to user_path current_user, page: params[:page]
+  end
+
   private
     def feed_params
       params.require(:feed).permit({:file => []})

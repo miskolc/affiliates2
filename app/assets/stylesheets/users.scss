@@ -9,3 +9,16 @@
     margin-top: 7px;
   }
 }
+
+.feeds-list,
+.products-list {
+  a {
+    text-decoration: none !important;
+  }
+
+  .delete-button {
+    .button-text {
+      margin-left: 5px;
+    }
+  }
+}

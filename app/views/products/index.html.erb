@@ -1,5 +1,4 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<h1>Products</h1>
 <%= will_paginate @products %>
 <div class="table-responsive">
  <table class="table table-striped table-hover">
@@ -17,7 +16,7 @@
   <% @products.each do |product| %>
      <tr>
        <td><%= "photo" %></td>
-       <td><%= product.title %></td>
+       <td><%= link_to product.title, user_feed_product_path(current_user, @feed, product) %></td>
        <td><%= link_to product.url, product.url %></td>
        <td><%= "$#{product.price}" %></td>
        <td><%= "Update Product" %></td>
@@ -27,4 +26,4 @@
   </tbody>
  </table>
 </div>
-<%= will_paginate @feeds %>
+<%= will_paginate @products %>

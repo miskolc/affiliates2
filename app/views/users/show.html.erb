@@ -1,9 +1,7 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<h2>Import Feeds</h2>
+<h3>Import Feeds</h3>
 <%= form_for [current_user, @feed], multipart: true do |f| %>
   <%= f.file_field :file, multiple: true %>
-  <%= f.submit "Add Feed" %>
+  <%= f.submit "Import Feed", class: "btn btn-primary btn-sm" %>
 <% end %>
 
 <%= will_paginate @feeds %>

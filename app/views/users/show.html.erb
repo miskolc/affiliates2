@@ -22,7 +22,7 @@
        <td><%= feed.basename %></td>
        <td><%= link_to "Products", user_feed_products_path(current_user, feed) %></td>
        <td>
-         <%= link_to raw("<span class='glyphicon glyphicon-remove' aria-hidden='true'></span><b class='button-text'>Delete Feed</b>"), user_feed_path(current_user, feed, page: params[:page]), method: :delete, class: "btn btn-danger btn-sm delete-button"%>
+         <%= link_to raw("<span class='glyphicon glyphicon-remove' aria-hidden='true'></span><b class='button-text'>Delete Feed</b>"), user_feed_path(current_user, feed, page: params[:page]), method: :delete, class: "btn btn-danger btn-sm icon-button"%>
        </td>
      </tr>
   <% end %>

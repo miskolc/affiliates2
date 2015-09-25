@@ -1,6 +1,6 @@
 class Feed < ActiveRecord::Base
   belongs_to :user
-  has_many :products
+  has_many :products, dependent: :destroy
   mount_uploaders :file, FileUploader
 
   def products_on_page page

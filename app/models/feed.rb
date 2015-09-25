@@ -1,6 +1,7 @@
 class Feed < ActiveRecord::Base
   belongs_to :user
   has_many :products, dependent: :destroy
+  after_destroy :delete_file_from_disk
   mount_uploaders :file, FileUploader
 
   def products_on_page page
@@ -51,5 +52,9 @@ class Feed < ActiveRecord::Base
 
   def directory
     File.dirname self.file[0].path if self.file[0]
+  end
+
+  def delete_file_from_disk
+    FileUtils.rm_rf(File.join(FileUtils.pwd, "public", "uploads", "feed", "file", self.id.to_s))
   end
 end

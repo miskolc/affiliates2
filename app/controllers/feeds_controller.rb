@@ -8,7 +8,9 @@ class FeedsController < ApplicationController
 
   def destroy
     @feed = current_user.feeds.find params[:id]
+    # OPTIMIZE Move to a Deletion Worker
     @feed.destroy
+    # OPTIMIZE Use AJAX
     redirect_to user_path current_user, page: params[:page]
   end
 

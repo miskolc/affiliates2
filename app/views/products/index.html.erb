@@ -16,7 +16,7 @@
   <% @products.each do |product| %>
      <tr>
        <td><%= "photo" %></td>
-       <td><%= product.title %></td>
+       <td><%= link_to product.title, user_feed_product_path(current_user, @feed, product) %></td>
        <td><%= link_to product.url, product.url %></td>
        <td><%= "$#{product.price}" %></td>
        <td><%= "Update Product" %></td>

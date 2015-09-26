@@ -5,7 +5,7 @@ class Feed < ActiveRecord::Base
   mount_uploaders :file, FileUploader
 
   def products_on_page page
-    products.paginate(page: page, per_page: 10).order("updated_at DESC")
+    products.paginate(page: page, per_page: 10).order("created_at DESC")
   end
 
   def save_products

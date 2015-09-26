@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
   def destroy
     @product = @feed.products.find(params[:id])
     @product.destroy
-    redirect_to user_feed_products_path(current_user, @feed, params[:page])
+    redirect_to user_feed_products_path(current_user, @feed, page: params[:page])
   end
 
   private

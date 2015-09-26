@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
   def update
     @product = @feed.products.find(params[:id])
     @product.update_attributes product_params
-    redirect_to edit_user_feed_product_path(current_user, @feed, @product)
+    redirect_to edit_user_feed_product_path(current_user, @feed, @product, page: params[:page] )
   end
 
   def destroy

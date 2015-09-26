@@ -2,6 +2,7 @@
 <h1>Edit product information</h1>
 
 <%= form_for [current_user, @feed, @product], html: {class: "form-horizontal"} do |f| %>
+    <%= hidden_field_tag :page, params[:page] if params[:page] %>
     <div class="field form-group">
       <%= f.label :title %>
       <%= f.text_field :title, class: "form-control" %>

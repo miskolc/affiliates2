@@ -19,5 +19,5 @@
     </div>
 <% end %>
 
-<%= link_to "Products", user_feed_products_path(current_user, @feed) %>
+<%= link_to "Products", user_feed_products_path(current_user, @feed, page: params[:page]) %>
 </div>

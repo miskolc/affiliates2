@@ -9,8 +9,22 @@ class ProductsController < ApplicationController
     @product = @feed.products.find(params[:id])
   end
 
+  def edit
+    @product = @feed.products.find(params[:id])
+  end
+
+  def update
+    @product = @feed.products.find(params[:id])
+    @product.update_attributes product_params
+    redirect_to edit_user_feed_product_path(current_user, @feed, @product)
+  end
+
   private
     def get_feed
       @feed = current_user.feeds.find params[:feed_id]
+    end
+
+    def product_params
+      params.require(:product).permit(:title, :url, :price)
     end
 end

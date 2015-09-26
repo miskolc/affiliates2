@@ -19,6 +19,12 @@ class ProductsController < ApplicationController
     redirect_to edit_user_feed_product_path(current_user, @feed, @product)
   end
 
+  def destroy
+    @product = @feed.products.find(params[:id])
+    @product.destroy
+    redirect_to user_feed_products_path(current_user, @feed, params[:page])
+  end
+
   private
     def get_feed
       @feed = current_user.feeds.find params[:feed_id]
